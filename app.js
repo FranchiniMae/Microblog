@@ -3,6 +3,7 @@ console.log("linked.");
 $(function() {
 
 clickSubmit();
+byeNote();
 
 });
 
@@ -24,7 +25,7 @@ function submitPost(event) {
 	postsArray.push(newPost);
 
 	for (var i = 0; i < postsArray.length; i++) {
-	var list = "<li>" + postsArray[i] + "</li>";
+	var list = "<li class='checkbox grow'>" + "<input id='trashNote' type='checkbox'>" + postsArray[i] + "</li>";
 	localStorage.setItem(i, postsArray[i]);
 	}
 
@@ -32,10 +33,15 @@ function submitPost(event) {
 
 	$("#main").append(list);
 	// localStorage.post = newPost;
-
 }
 
 	this.form.reset();
 
 }
 
+function byeNote() {
+$('#trashPost').on("click", function() {
+	$(".checkbox input:checked").parent().remove();
+});
+
+}
